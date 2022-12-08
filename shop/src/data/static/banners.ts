@@ -821,8 +821,8 @@ export const classicDemoBannerThree = {
 export const trendyDemoHeroBanner = [
   {
     id: 1,
-    title: "winter collection",
-    slug: "winter-collection",
+    title: "",
+    slug: "",
     image: {
       mobile: {
         url: "/assets/images/banner/trendy/mobile/banner-1.jpg",
@@ -838,8 +838,8 @@ export const trendyDemoHeroBanner = [
   },
   {
     id: 2,
-    title: "gift collection",
-    slug: "gift-collection",
+    title: "",
+    slug: "",
     image: {
       mobile: {
         url: "/assets/images/banner/trendy/mobile/banner-2.jpg",
@@ -855,8 +855,8 @@ export const trendyDemoHeroBanner = [
   },
   {
     id: 3,
-    title: "party collection",
-    slug: "gift-collection",
+    title: "",
+    slug: "",
     image: {
       mobile: {
         url: "/assets/images/banner/trendy/mobile/banner-3.jpg",
@@ -875,8 +875,8 @@ export const trendyDemoHeroBanner = [
 export const saleBannerGrid = [
 	{
 		id: 1,
-		title: "25% Discount on Selected Items",
-		slug: "t-shirts-collection",
+		title: "",
+		slug: "",
 		image: {
 			mobile: {
 				url: "/assets/images/banner/grid/banner-mobile-4.jpg",
@@ -892,8 +892,8 @@ export const saleBannerGrid = [
 	},
 	{
 		id: 2,
-		title: "30% Discount on Kids Items",
-		slug: "jins-collection",
+		title: "",
+		slug: "",
 		image: {
 			mobile: {
 				url: "/assets/images/banner/grid/banner-mobile-5.jpg",
