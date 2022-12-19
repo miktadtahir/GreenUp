@@ -12,12 +12,12 @@ interface Props {
 }
 
 export const ProductAttributes: React.FC<Props> = ({
-	className = "mb-4",
-	title,
-	attributes,
-	active,
-	onClick,
-}) => {
+													   className = "mb-4",
+													   title,
+													   attributes,
+													   active,
+													   onClick,
+												   }) => {
 	return (
 		<div className={className}>
 			<h3 className="text-base md:text-lg text-heading font-semibold mb-2.5 capitalize">

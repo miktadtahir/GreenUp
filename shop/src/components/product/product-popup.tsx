@@ -23,7 +23,7 @@ export default function ProductPopup({ productSlug }: { productSlug: string }) {
   const { t } = useTranslation("common");
   const { closeModal, openCart } = useUI();
   const { data: product, isLoading: loading }: any =
-    useProductQuery(productSlug);
+      useProductQuery(productSlug);
   const router = useRouter();
   const { addItemToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -39,19 +39,19 @@ export default function ProductPopup({ productSlug }: { productSlug: string }) {
   const variations = getVariations(product?.variations!);
 
   const isSelected = !isEmpty(variations)
-    ? !isEmpty(attributes) &&
+      ? !isEmpty(attributes) &&
       Object.keys(variations).every((variation) =>
-        attributes.hasOwnProperty(variation)
+          attributes.hasOwnProperty(variation)
       )
-    : true;
+      : true;
 
   let selectedVariation: any = {};
   if (isSelected) {
     selectedVariation = product?.variation_options?.find((o: any) =>
-      isEqual(
-        o.options.map((v: any) => v.value).sort(),
-        Object.values(attributes).sort()
-      )
+        isEqual(
+            o.options.map((v: any) => v.value).sort(),
+            Object.values(attributes).sort()
+        )
     );
   }
 
@@ -106,171 +106,170 @@ export default function ProductPopup({ productSlug }: { productSlug: string }) {
 
   if (loading) {
     return (
-      <div className="w-96 flex justify-center items-center h-96 bg-white relative overflow-hidden">
-        <Spinner />
-      </div>
+        <div className="w-96 flex justify-center items-center h-96 bg-white relative overflow-hidden">
+          <Spinner />
+        </div>
     );
   }
 
   return (
-    <div className="rounded-lg bg-white">
-      <div className="flex flex-col lg:flex-row w-full md:w-[650px] lg:w-[960px] mx-auto overflow-hidden">
-        <div className="flex-shrink-0 flex items-center justify-center w-full lg:w-430px max-h-430px lg:max-h-full overflow-hidden bg-gray-300">
-          <Image
-            width={430}
-            height={558}
-            src={
-              product?.image?.original ??
-              "/assets/placeholder/products/product-thumbnail.svg"
-            }
-            alt={product.name}
-            className="lg:object-cover lg:w-full lg:h-full"
-          />
-        </div>
-
-        <div className="flex flex-col p-5 md:p-8 w-full">
-          <div className="pb-5">
-            <div
-              className="mb-2 md:mb-2.5 block -mt-1.5"
-              onClick={navigateToProductPage}
-              role="button"
-            >
-              <h2 className="text-heading text-lg md:text-xl lg:text-2xl font-semibold hover:text-black">
-                {product.name}
-              </h2>
-            </div>
-
-            {product.unit && isEmpty(variations) && (
-              <span className="text-sm font-normal text-body mt-2 md:mt-3 block">
-                {product.unit}
-              </span>
-            )}
-
-            <p className="text-sm leading-6 md:text-body md:leading-7">
-              {product.description}
-            </p>
-
-            <div className="flex items-center mt-3">
-              {!isEmpty(variations) ? (
-                <VariationPrice
-                  selectedVariation={selectedVariation}
-                  minPrice={product.min_price}
-                  maxPrice={product.max_price}
-                />
-              ) : (
-                <>
-                  <div className="text-heading font-semibold text-base md:text-xl lg:text-2xl">
-                    {price}
-                  </div>
-
-                  {basePrice && (
-                    <del className="font-segoe text-gray-400 text-base lg:text-xl ltr:pl-2.5 rtl:pr-2.5 -mt-0.5 md:mt-0">
-                      {basePrice}
-                    </del>
-                  )}
-                </>
-              )}
-            </div>
+      <div className="rounded-lg bg-white">
+        <div className="flex flex-col lg:flex-row w-full md:w-[650px] lg:w-[960px] mx-auto overflow-hidden">
+          <div className="flex-shrink-0 flex items-center justify-center w-full lg:w-430px max-h-430px lg:max-h-full overflow-hidden bg-gray-300">
+            <Image
+                width={430}
+                height={558}
+                src={
+                    product?.image?.original ??
+                    "/assets/placeholder/products/product-thumbnail.svg"
+                }
+                alt={product.name}
+                className="lg:object-cover lg:w-full lg:h-full"
+            />
           </div>
 
-          {Object.keys(variations).map((variation) => {
-            return (
-              <ProductAttributes
-                key={`popup-attribute-key${variation}`}
-                title={variation}
-                attributes={variations[variation]}
-                active={attributes[variation]}
-                onClick={handleAttribute}
-              />
-            );
-          })}
-
-          <div className="pt-2 md:pt-4">
-            <div className="flex items-center justify-between mb-4 space-x-3 sm:space-x-4 rtl:space-x-reverse">
-              {isEmpty(variations) && (
-                <>
-                  {Number(product.quantity) > 0 ? (
-                    <Counter
-                      quantity={quantity}
-                      onIncrement={() => setQuantity((prev) => prev + 1)}
-                      onDecrement={() =>
-                        setQuantity((prev) => (prev !== 1 ? prev - 1 : 1))
-                      }
-                      disableDecrement={quantity === 1}
-                      disableIncrement={Number(product.quantity) === quantity}
-                    />
-                  ) : (
-                    <div className="text-base text-red-500 whitespace-nowrap ltr:lg:ml-7 rtl:first:-mr-4">
-                      {t("text-out-stock")}
-                    </div>
-                  )}
-                </>
-              )}
-
-              {!isEmpty(selectedVariation) && (
-                <>
-                  {selectedVariation?.is_disable ||
-                  selectedVariation.quantity === 0 ? (
-                    <div className="text-base text-red-500 whitespace-nowrap ltr:lg:ml-7 rtl:first:-mr-4">
-                      {t("text-out-stock")}
-                    </div>
-                  ) : (
-                    <Counter
-                      quantity={quantity}
-                      onIncrement={() => setQuantity((prev) => prev + 1)}
-                      onDecrement={() =>
-                        setQuantity((prev) => (prev !== 1 ? prev - 1 : 1))
-                      }
-                      disableDecrement={quantity === 1}
-                      disableIncrement={
-                        Number(selectedVariation.quantity) === quantity
-                      }
-                    />
-                  )}
-                </>
-              )}
-
-              <Button
-                onClick={addToCart}
-                variant="slim"
-                className={`w-full lg:w-6/12 xl:w-full ${
-                  !isSelected && "bg-gray-400 hover:bg-gray-400"
-                }`}
-                disabled={
-                  !isSelected ||
-                  !product?.quantity ||
-                  (!isEmpty(selectedVariation) && !selectedVariation?.quantity)
-                }
-                loading={addToCartLoader}
+          <div className="flex flex-col p-5 md:p-8 w-full">
+            <div className="pb-5">
+              <div
+                  className="mb-2 md:mb-2.5 block -mt-1.5"
+                  onClick={navigateToProductPage}
+                  role="button"
               >
+                <h2 className="text-heading text-lg md:text-xl lg:text-2xl font-semibold hover:text-black">
+                  {product.name}
+                </h2>
+              </div>
+
+              {product.unit && isEmpty(variations) && (
+                  <span className="text-sm font-normal text-body mt-2 md:mt-3 block">
+                {product.unit}
+              </span>
+              )}
+
+              <p className="text-sm leading-6 md:text-body md:leading-7">
+                {product.description}
+              </p>
+
+              <div className="flex items-center mt-3">
+                {!isEmpty(variations) ? (
+                    <VariationPrice
+                        selectedVariation={selectedVariation}
+                        minPrice={product.min_price}
+                    />
+                ) : (
+                    <>
+                      <div className="text-heading font-semibold text-base md:text-xl lg:text-2xl">
+                        {price}
+                      </div>
+
+                      {basePrice && (
+                          <del className="font-segoe text-gray-400 text-base lg:text-xl ltr:pl-2.5 rtl:pr-2.5 -mt-0.5 md:mt-0">
+                            {basePrice}
+                          </del>
+                      )}
+                    </>
+                )}
+              </div>
+            </div>
+
+            {Object.keys(variations).map((variation) => {
+              return (
+                  <ProductAttributes
+                      key={`popup-attribute-key${variation}`}
+                      title={variation}
+                      attributes={variations[variation]}
+                      active={attributes[variation]}
+                      onClick={handleAttribute}
+                  />
+              );
+            })}
+
+            <div className="pt-2 md:pt-4">
+              <div className="flex items-center justify-between mb-4 space-x-3 sm:space-x-4 rtl:space-x-reverse">
+                {isEmpty(variations) && (
+                    <>
+                      {Number(product.quantity) > 0 ? (
+                          <Counter
+                              quantity={quantity}
+                              onIncrement={() => setQuantity((prev) => prev + 1)}
+                              onDecrement={() =>
+                                  setQuantity((prev) => (prev !== 1 ? prev - 1 : 1))
+                              }
+                              disableDecrement={quantity === 1}
+                              disableIncrement={Number(product.quantity) === quantity}
+                          />
+                      ) : (
+                          <div className="text-base text-red-500 whitespace-nowrap ltr:lg:ml-7 rtl:first:-mr-4">
+                            {t("text-out-stock")}
+                          </div>
+                      )}
+                    </>
+                )}
+
+                {!isEmpty(selectedVariation) && (
+                    <>
+                      {selectedVariation?.is_disable ||
+                      selectedVariation.quantity === 0 ? (
+                          <div className="text-base text-red-500 whitespace-nowrap ltr:lg:ml-7 rtl:first:-mr-4">
+                            {t("text-out-stock")}
+                          </div>
+                      ) : (
+                          <Counter
+                              quantity={quantity}
+                              onIncrement={() => setQuantity((prev) => prev + 1)}
+                              onDecrement={() =>
+                                  setQuantity((prev) => (prev !== 1 ? prev - 1 : 1))
+                              }
+                              disableDecrement={quantity === 1}
+                              disableIncrement={
+                                  Number(selectedVariation.quantity) === quantity
+                              }
+                          />
+                      )}
+                    </>
+                )}
+
+                <Button
+                    onClick={addToCart}
+                    variant="slim"
+                    className={`w-full lg:w-6/12 xl:w-full ${
+                        !isSelected && "bg-gray-400 hover:bg-gray-400"
+                    }`}
+                    disabled={
+                        !isSelected ||
+                        !product?.quantity ||
+                        (!isEmpty(selectedVariation) && !selectedVariation?.quantity)
+                    }
+                    loading={addToCartLoader}
+                >
                 <span className="py-2 3xl:px-8">
                   {product?.quantity ||
                   (!isEmpty(selectedVariation) && selectedVariation?.quantity)
-                    ? t("text-add-to-cart")
-                    : t("text-out-stock")}
+                      ? t("text-add-to-cart")
+                      : t("text-out-stock")}
                 </span>
+                </Button>
+              </div>
+
+              {viewCartBtn && (
+                  <button
+                      onClick={navigateToCartPage}
+                      className="w-full mb-4 h-11 md:h-12 rounded bg-gray-100 text-heading focus:outline-none border border-gray-300 transition-colors hover:bg-gray-50 focus:bg-gray-50 text-sm xl:text-base"
+                  >
+                    {t("text-view-cart")}
+                  </button>
+              )}
+
+              <Button
+                  onClick={navigateToProductPage}
+                  variant="flat"
+                  className="w-full h-11 md:h-12"
+              >
+                {t("text-view-details")}
               </Button>
             </div>
-
-            {viewCartBtn && (
-              <button
-                onClick={navigateToCartPage}
-                className="w-full mb-4 h-11 md:h-12 rounded bg-gray-100 text-heading focus:outline-none border border-gray-300 transition-colors hover:bg-gray-50 focus:bg-gray-50 text-sm xl:text-base"
-              >
-                {t("text-view-cart")}
-              </button>
-            )}
-
-            <Button
-              onClick={navigateToProductPage}
-              variant="flat"
-              className="w-full h-11 md:h-12"
-            >
-              {t("text-view-details")}
-            </Button>
           </div>
         </div>
       </div>
-    </div>
   );
 }

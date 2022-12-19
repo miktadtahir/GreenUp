@@ -10,8 +10,8 @@ interface ProductGridProps {
 }
 
 export const ProductSearchBlock: FC<ProductGridProps> = ({
-  className = "",
-}) => {
+                                                           className = "",
+                                                         }) => {
   const { query } = useRouter();
   const priceRange = query.price && formatPriceRange(query.price as string);
 
@@ -31,26 +31,26 @@ export const ProductSearchBlock: FC<ProductGridProps> = ({
     variations: query.variations && (query.variations as string),
     tags: query.tags && (query.tags as string),
     ...(priceRange &&
-      priceRange.length === 2 && { min_price: priceRange.join(",") }),
-    ...(priceRange && priceRange.length === 1 && { max_price: priceRange[0] }),
+        priceRange.length === 2 && { min_price: priceRange.join(",") }),
+
   });
 
   if (error) return <p>{error.message}</p>;
 
   return (
-    <>
-      <SearchTopBar
-        searchResultCount={data?.pages?.[0]?.paginatorInfo?.total}
-      />
-      <ProductInfiniteGrid
-        className={className}
-        loading={isLoading}
-        data={data}
-        hasNextPage={hasNextPage}
-        loadingMore={loadingMore}
-        fetchNextPage={fetchNextPage}
-      />
-    </>
+      <>
+        <SearchTopBar
+            searchResultCount={data?.pages?.[0]?.paginatorInfo?.total}
+        />
+        <ProductInfiniteGrid
+            className={className}
+            loading={isLoading}
+            data={data}
+            hasNextPage={hasNextPage}
+            loadingMore={loadingMore}
+            fetchNextPage={fetchNextPage}
+        />
+      </>
   );
 };
 

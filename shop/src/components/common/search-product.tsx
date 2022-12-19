@@ -43,7 +43,6 @@ const SearchProduct: React.FC<SearchProductProps> = ({ item }) => {
           {!isEmpty(variations) ? (
             <VariationPrice
               minPrice={item.min_price}
-              maxPrice={item.max_price}
               basePriceClassName="text-heading font-semibold text-sm"
               discountPriceClassName="ltr:pl-2 rtl:pr-2 text-gray-400 font-normal"
             />

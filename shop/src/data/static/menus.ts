@@ -9,23 +9,19 @@ export const menu = [
     path: "/category/saksilar",
     label: "Saksılar",
   },
+
   {
-    id: 5,
-    path: "/category/tepsiler",
-    label: "Tepsiler"
-  },
-  {
-    id: 6,
+    id: 3,
     path: "/category/cicekler",
     label: "Çiçekler"
   },
   {
-    id: 6,
+    id: 4,
     path: "/category/bitkiler",
     label: "Bitkiler"
   },
   {
-    id: 6,
+    id: 5,
     path: "/shops/greenup-magaza",
     label: "GreenUp Mağaza"
   },
@@ -47,23 +43,19 @@ export const mobileMenu = [
     path: "/category/saksilar",
     label: "Saksılar",
   },
+
   {
-    id: 5,
-    path: "/category/tepsiler",
-    label: "Tepsiler"
-  },
-  {
-    id: 6,
+    id: 3,
     path: "/category/cicekler",
     label: "Çiçekler"
   },
   {
-    id: 6,
+    id: 4,
     path: "/category/bitkiler",
     label: "Bitkiler"
   },
   {
-    id: 6,
+    id: 5,
     path: "/shops/greenup-magaza",
     label: "GreenUp Mağaza"
   },
