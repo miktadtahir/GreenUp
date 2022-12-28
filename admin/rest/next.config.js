@@ -3,6 +3,7 @@ const runtimeCaching = require("next-pwa/cache");
 const { i18n } = require("./next-i18next.config");
 
 module.exports = withPWA({
+  basePath: "/admin",
   i18n,
   pwa: {
     disable: process.env.NODE_ENV === "development",
@@ -12,6 +13,7 @@ module.exports = withPWA({
 
   images: {
     domains: [
+      "greenup.com.tr",
       "via.placeholder.com",
       "res.cloudinary.com",
       "s3.amazonaws.com",

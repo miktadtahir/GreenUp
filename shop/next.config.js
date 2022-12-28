@@ -10,6 +10,7 @@ module.exports = withPWA({
   i18n,
   images: {
     domains: [
+      "greenup.com.tr",
       "127.0.0.1",
       "localhost",
       "googleusercontent.com",

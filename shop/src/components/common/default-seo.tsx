@@ -29,8 +29,8 @@ const DefaultSeo = () => {
           href: '/manifest.json',
         },
       ]}
-      title={settings?.seo?.metaTitle || settings?.siteTitle || 'E-Commerce'}
-      defaultTitle="ChawkBazar"
+      title={settings?.seo?.metaTitle || settings?.siteTitle || 'GreenUp'}
+      defaultTitle="GreenUp"
       description={settings?.seo?.metaDescription || settings?.siteSubtitle}
       canonical={settings?.seo?.canonicalUrl}
       openGraph={{

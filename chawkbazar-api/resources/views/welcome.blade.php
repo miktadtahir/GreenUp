@@ -68,12 +68,11 @@
 </head>
 
 <body class="welcome">
-    <h1>Marvel Laravel</h1>
+    <h1>Felixart E-commerce</h1>
+    <h2>If you're not authorized, please leave this page.</h2>
     <ul>
-        <li><a href="https://pickbazarapi.redq.io/shop/playground">GraphQL Playground</a></li>
-        <li><a href="https://pickbazar-doc.vercel.app/">Documentation</a></li>
-        <li><a href="http://redqsupport.ticksy.com/">Support</a></li>
-        <li><a href="https://felixart.com.tr/">Contact</a></li>
+        <li><a href="https://felixart.com.tr/">Support</a></li>
+        <li><a href="https://felixart.com.tr/contact">Contact</a></li>
     </ul>
 </body>
 
