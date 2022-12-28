@@ -69,9 +69,10 @@
 
 <body class="welcome">
     <h1>Felixart E-commerce</h1>
-    <h2>If you're not authorized, please leave this page.</h2>
+    <h5>If you're not authorized, please leave this page.</h5>
     <ul>
         <li><a href="https://felixart.com.tr/">Support</a></li>
+        <li><a href="https://felixart.space/">Space</a></li>
         <li><a href="https://felixart.com.tr/contact">Contact</a></li>
     </ul>
 </body>
