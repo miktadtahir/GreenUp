@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/yandex_e1b7f9988662daef.html', function () {
+    return view('yandex');
+});
