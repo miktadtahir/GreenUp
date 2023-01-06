@@ -22,7 +22,7 @@ export const menu = [
   },
   {
     id: 5,
-    path: "/shops/greenup-magaza",
+    path: "/shops/greenup",
     label: "GreenUp Mağaza"
   },
   {
@@ -56,7 +56,7 @@ export const mobileMenu = [
   },
   {
     id: 5,
-    path: "/shops/greenup-magaza",
+    path: "/shops/greenup",
     label: "GreenUp Mağaza"
   },
   {
