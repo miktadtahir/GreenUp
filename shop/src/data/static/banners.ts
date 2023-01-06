@@ -822,7 +822,7 @@ export const trendyDemoHeroBanner = [
   {
     id: 1,
     title: "",
-    slug: "",
+    slug: "category/saksilar",
     image: {
       mobile: {
         url: "/assets/images/banner/trendy/mobile/banner-1.jpg",
@@ -839,7 +839,7 @@ export const trendyDemoHeroBanner = [
   {
     id: 2,
     title: "",
-    slug: "",
+    slug: "category/cicekler",
     image: {
       mobile: {
         url: "/assets/images/banner/trendy/mobile/banner-2.jpg",
@@ -856,7 +856,7 @@ export const trendyDemoHeroBanner = [
   {
     id: 3,
     title: "",
-    slug: "",
+    slug: "/category/bitkiler",
     image: {
       mobile: {
         url: "/assets/images/banner/trendy/mobile/banner-3.jpg",
